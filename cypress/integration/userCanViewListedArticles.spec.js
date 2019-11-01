@@ -7,10 +7,8 @@ describe('user can view listed articles', () => {
       response: 'fixture:articles.json'
     })
     cy.visit('http://localhost:3001')
-    cy.get('h1').should('contain', 'Classy News')
-    cy.get('h2')
-      .should('contain', 'Leonardo da Vinci five centuries on:')
-      .should('contain', 'Some Title')
+    cy.contains('Leonardo da Vinci five centuries on:')
+    cy.contains('Some Title')
     cy.contains('The Louvre museum in Paris,')
     cy.contains('Some good content')
     cy.contains('Lauren Lion')
@@ -23,9 +21,10 @@ describe('user can view listed articles', () => {
     cy.route({
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles',
-      status: 400,
+      status: 404,
+      response: 'fixture:unsuccessfully_viewing_article.json'
     })
     cy.visit('http://localhost:3001')
-    cy.contains('Network Error')
+    cy.contains('Request failed with status code 404')
   })
 })

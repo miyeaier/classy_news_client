@@ -51,6 +51,6 @@ describe('User can sign up', () => {
       cy.get('#password-confirmation').type('wrong_password')
     })
     cy.get('#submit-signup-form').click()
-    cy.get('#error-message').should('contain', 'Invalid credentials')
+    cy.contains('Invalid credentials')
   })
 })
