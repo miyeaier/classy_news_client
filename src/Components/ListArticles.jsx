@@ -27,13 +27,14 @@ class ListArticles extends Component {
   }
 
   async getArticles() {
+  debugger
     let result = await getData()
 
     if (result.status === 400) {
       this.setErrorMessage(result.error_message)
     } else {
       this.setState({
-        articles: result.data
+        articles: result.data.articles
       })
     }
   }
@@ -46,18 +47,16 @@ class ListArticles extends Component {
   }
 
   render() {
-    let renderListArticles;
+    let renderListArticles, specificArticle, error_message
     let renderArticle = this.state.renderArticle
     const articleData = this.state.articles
-    let specificArticle
-    let error_message
 
     if (this.state.error_message) {
       error_message = <p>{ this.state.error_message }</p>
     }
 
     if (articleData.length !== 0) {
-        if (renderArticle === false) {
+        if (!renderArticle) {
           renderListArticles = (
             <>
               {articleData.map(article => {
@@ -79,7 +78,7 @@ class ListArticles extends Component {
           )
         }
       }
-      if (renderArticle === true) {
+      if (renderArticle) {
         specificArticle = (
           <ViewArticle
             chosenArticle = {this.state.chosenArticleId}

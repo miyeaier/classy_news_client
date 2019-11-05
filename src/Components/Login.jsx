@@ -40,9 +40,7 @@ class Login extends Component {
   }
 
   render() {
-    let loginForm
-    let welcomeMessage
-    let errorMessage
+    let loginForm, welcomeMessage, errorMessage
 
     if (this.props.currentUser.isSignedIn) {
       welcomeMessage = <p id="welcome-message">Hello {this.props.currentUser.attributes.name}</p>

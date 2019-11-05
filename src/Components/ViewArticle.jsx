@@ -4,14 +4,15 @@ import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
   state = {
-    article: null,
+    article: null
   }
 
   async componentDidMount() {
+  debugger
     let response = await getArticle(this.props.chosenArticle)
     if (response.status === 200) {
       this.setState({
-        article: response.data
+        article: response.data.article
       })
     } else {
       this.props.renderErrorMessage(response)
