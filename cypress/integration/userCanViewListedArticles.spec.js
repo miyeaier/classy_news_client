@@ -22,7 +22,7 @@ describe('user can view listed articles', () => {
       method: 'GET',
       url: 'http://localhost:3000/api/v1/articles',
       status: 404,
-      response: 'fixture:unsuccessfully_viewing_article.json'
+      response: 'fixture:unsuccessfully_viewing_articles.json'
     })
     cy.visit('http://localhost:3001')
     cy.contains('Request failed with status code 404')

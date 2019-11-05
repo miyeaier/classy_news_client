@@ -4,7 +4,7 @@ import { getArticle } from '../Modules/RequestArticles'
 
 class ViewArticle extends Component {
   state = {
-    article: null
+    article: null,
   }
 
   async componentDidMount() {
@@ -14,7 +14,7 @@ class ViewArticle extends Component {
         article: response.data
       })
     } else {
-      this.props.renderErrorMessage(response)
+      this.props.renderErrorMessage(response)
     }
   }
 
@@ -22,7 +22,7 @@ class ViewArticle extends Component {
     let singleArticle
     const article = this.state.article
 
-    if (article !== null) {
+    if (article) {
       singleArticle = (
         <div id="single-article">
           <Container>
